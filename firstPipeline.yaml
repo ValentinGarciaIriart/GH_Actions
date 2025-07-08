@@ -1,0 +1,22 @@
+name: primerPipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World and Directories
+        run: |
+          echo Hello World
+          ls -R
+          if grep first archivo.txt > /dev/null; then
+            echo existe el archivo que se busca
+          else
+            echo No existe el archivo buscado
+          fi
