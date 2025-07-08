@@ -11,11 +11,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
       - name: Print Hello World and Directories
         run: |
           echo Hello World
           ls -R
-          if grep first archivo.txt > /dev/null; then
+          if ls *first* 1> /dev/null 2>&1; > /dev/null; then
             echo existe el archivo que se busca
           else
             echo No existe el archivo buscado
