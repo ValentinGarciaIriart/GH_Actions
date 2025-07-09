@@ -54,7 +54,10 @@ jobs:
         with:
           name: newArch
       - run: cat archivillo.txt
-      - run: echo Se ejecutaron correctamente todos los pasos en esta pipeline completisima 
+      - run: echo Se ejecutaron correctamente todos los pasos en esta pipeline completisima
+      - name: Printear Variables Globales
+        run: echo Mi nombre es ${{ vars.NOMBRE }}
+      - run: echo Mi apellido es ${{ vars.APELLIDO }}
   uso-vars-y-approval:
     needs: bajar-artifact
     environment: envart
@@ -62,6 +65,4 @@ jobs:
     steps:
       - name: Step Printear
         run: echo Mi nombre es ${{ vars.MI_NOMBRE }}
-      -  run: echo Mi nombre es ${{ vars.NOMBRE }}
-      -  run: echo Mi apellido es ${{ vars.APELLIDO }}
     
