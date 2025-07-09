@@ -61,7 +61,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Step Printear
-        run: echo Mi nombre es":" ${{ vars.MI_NOMBRE }}
-      -  run: echo Mi nombre es":" ${{ vars.NOMBRE }}
-      -  run: echo Mi apellido es":" ${{ vars.APELLIDO }}
+        run: echo Mi nombre es ${{ vars.MI_NOMBRE }}
+      -  run: echo Mi nombre es ${{ vars.NOMBRE }}
+      -  run: echo Mi apellido es ${{ vars.APELLIDO }}
     
