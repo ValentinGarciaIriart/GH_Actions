@@ -7,8 +7,11 @@ jobs:
   llamar-workflow:
     runs-on: "ubuntu-latest"
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Invocar workflow
         uses: ./.github/workflows/ogWorkflow.yaml@main
         with:
           saludo: "Hola amigos soy mickey mouse!"
-      - run: echo Arriba esta el saludo que invoque por workflow
+      - name: Ultimo mensaje
+        run: echo Arriba esta el saludo que invoque por workflow
