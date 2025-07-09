@@ -58,6 +58,9 @@ jobs:
       - name: Printear Variables Globales
         run: echo Mi nombre es $NOMBRE
       - run: echo Mi apellido es $APELLIDO
+      - name: Pipeline OK
+        if: success()
+        run: echo "✅ La pipeline se ejecutó con éxito!"
   uso-vars-y-approval:
     needs: bajar-artifact
     environment: envart
@@ -67,5 +70,8 @@ jobs:
         run: echo Mi nombre es ${{ vars.MI_NOMBRE }}
       - run: echo Mi nombre es $NOMBRE
       - run: echo Mi apellido es $APELLIDO
+      - name: Validar if
+        if: "{{ $vars.NOMBRE == Valentin }}"
+        run: echo El nombre si era valentin
 
     
