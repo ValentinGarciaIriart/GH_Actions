@@ -1,8 +1,7 @@
-name: Ejemplo Artifact
+name: Intento Artifact
 
 on:
   workflow_dispatch:
-
 
 jobs:
   crear-artifact:
@@ -10,9 +9,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Crear Archivo
-        run: echo Hello World > archivo.txt
-      - uses: actions/upload-artifact@v4
+      - run: echo Mi nombre es Valentin > archivo.txt
+      - run: echo Y estoy preparando una entrevista >> archivo.txt
+      - name: Generar Artifact
+        uses: actions/upload-artifact@v4
         with:
           name: mensaje
           path: archivo.txt
@@ -24,4 +24,5 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: mensaje
-      - run: cat archivo.txt
+      - name: Imprimir contenido
+        run: cat archivo.txt
