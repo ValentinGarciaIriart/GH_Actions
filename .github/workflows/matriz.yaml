@@ -1,10 +1,10 @@
 name: ejMatrix
 
 on: 
-  push:
-    branches: ["main"]
-
-
+ # push:
+#    branches: ["main"]
+  workflow_dispatch:
+    
 jobs:
   use-matrix:
     strategy:
