@@ -71,7 +71,7 @@ jobs:
       - run: echo Mi nombre es $NOMBRE
       - run: echo Mi apellido es $APELLIDO
       - name: Validar if
-        if: ${{ vars.NOMBRE == 'Valentin' }}
+        if: ${{ vars.MI_NOMBRE == 'Valentin' }}
         run: echo El nombre si era valentin
 
     
