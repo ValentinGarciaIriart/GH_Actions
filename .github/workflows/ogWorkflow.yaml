@@ -1,0 +1,13 @@
+name: Workflow Invocado
+
+on:
+  workflow_call:
+    inputs:
+      saludo:
+        required: true
+        type: string
+jobs:
+  show-input:
+    runs-on: "ubuntu-latest"
+    steps: 
+       - run: echo "El saludo recibido es ${{ inputs.saludo }}" 
