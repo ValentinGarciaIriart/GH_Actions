@@ -65,4 +65,7 @@ jobs:
     steps:
       - name: Step Printear
         run: echo Mi nombre es ${{ vars.MI_NOMBRE }}
+      - run: echo Mi nombre es $NOMBRE
+      - run: echo Mi apellido es $APELLIDO
+
     
