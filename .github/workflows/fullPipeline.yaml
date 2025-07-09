@@ -6,7 +6,11 @@ on:
     paths:
       - "*/workflows/**"
   workflow_dispatch:
-    
+
+env:
+  NOMBRE: "Valentin"
+  APELLIDO: "Garcia"  
+
 jobs:
   uso-secret:
     runs-on: "ubuntu-latest"
@@ -50,4 +54,14 @@ jobs:
         with:
           name: newArch
       - run: cat archivillo.txt
-      - run: echo Se ejecutaron correctamente todos los pasos en esta pipeline completisima
+      - run: echo Se ejecutaron correctamente todos los pasos en esta pipeline completisima 
+  uso-vars-y-approval:
+    needs: bajar-artifact
+    environment: envart
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Step Printear
+        run: echo Mi nombre es":" ${{ vars.MI_NOMBRE }}
+      -  run: echo Mi nombre es":" ${{ vars.NOMBRE }}
+      -  run: echo Mi apellido es":" ${{ vars.APELLIDO }}
+    
