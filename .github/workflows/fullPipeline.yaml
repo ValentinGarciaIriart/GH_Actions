@@ -56,8 +56,8 @@ jobs:
       - run: cat archivillo.txt
       - run: echo Se ejecutaron correctamente todos los pasos en esta pipeline completisima
       - name: Printear Variables Globales
-        run: echo Mi nombre es ${{ vars.NOMBRE }}
-      - run: echo Mi apellido es ${{ vars.APELLIDO }}
+        run: echo Mi nombre es $NOMBRE
+      - run: echo Mi apellido es $APELLIDO
   uso-vars-y-approval:
     needs: bajar-artifact
     environment: envart
