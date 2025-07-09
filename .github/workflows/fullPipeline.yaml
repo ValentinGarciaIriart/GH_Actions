@@ -1,0 +1,53 @@
+name: Secretos y +
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "*/workflows/**"
+  workflow_dispatch:
+    
+jobs:
+  uso-secret:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Printear Secretos
+        run: echo "El secreto que tengo guardado es ${{ secrets.PASSWDGH }}"
+  caller-job:
+    uses: ValentinGarciaIriart/GH_Actions/.github/workflows/ogWorkflow.yaml@main
+    with:
+      saludo: "Hola me llamo valen jijo"
+  matriz-node:
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        node-version: [20,22]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar Node 
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm version
+  crear-artifact:
+    needs: matriz-node
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo Hello World > archivillo.txt
+      - run: echo Esta pipeline esta quedando pipon >> archivillo.txt
+      - name: Generar Artifact 
+        uses: actions/upload-artifact@v4
+        with:
+          name: newArch
+          path: archivillo.txt
+  bajar-artifact:
+    needs: crear-artifact
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Descargar Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: newArch
+      - run: cat archivillo.txt
+      - run: echo Se ejecutaron correctamente todos los pasos en esta pipeline completisima
