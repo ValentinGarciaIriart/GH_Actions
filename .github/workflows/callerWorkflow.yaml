@@ -8,7 +8,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - name: Invocar workflow
-        uses: ValentinGarciaIriart/GH_Actions/.github/workflows/ogWorkflow.yaml@main
+        uses: ./.github/workflows/ogWorkflow.yaml@main
         with:
           saludo: "Hola amigos soy mickey mouse!"
       - run: echo Arriba esta el saludo que invoque por workflow
