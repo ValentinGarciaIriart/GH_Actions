@@ -5,8 +5,6 @@ on:
 
 jobs:
   llamar-workflow:
-      #- name: Checkout
-      #  uses: actions/checkout@v4
       uses: ValentinGarciaIriart/GH_Actions/.github/workflows/ogWorkflow.yaml@main
       with:
         saludo: "Hola amigos soy mickey mouse!"
