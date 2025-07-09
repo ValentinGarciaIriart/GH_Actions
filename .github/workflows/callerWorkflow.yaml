@@ -7,10 +7,10 @@ jobs:
   llamar-workflow:
     runs-on: "ubuntu-latest"
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      #- name: Checkout
+      #  uses: actions/checkout@v4
       - name: Invocar workflow
-        uses: ./.github/workflows/ogWorkflow.yaml@main
+        uses: ./.github/workflows/ogWorkflow.yaml
         with:
           saludo: "Hola amigos soy mickey mouse!"
       - name: Ultimo mensaje
