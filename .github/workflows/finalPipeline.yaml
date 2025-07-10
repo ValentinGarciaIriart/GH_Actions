@@ -1,0 +1,67 @@
+name: ejDefinitivo
+
+on:
+  push:
+    branches: ["main"]
+    paths: 
+    - "*/src/**"
+  pull_request:
+    branches: ["main"]
+
+  workflow_dispatch:
+  
+env:
+  N1: 2
+  N2: 3
+  TEXTO: "un textillo por aca"
+
+jobs:
+  primerJob:
+    runs-on: ubuntu-latest
+    steps:
+    - run: | 
+        echo "La suma de los dos numeros es $(( N1 + N2 ))"
+        SUM=$((N1+N2))
+        echo "La suma ahora para el archivo da $SUM" > archivo.txt
+        echo $TEXTO >> archivo.txt
+    - name: Crear Artifact 
+      uses: actions/upload-artifact@v4
+      with:
+        name: artefacto
+        path: archivo.txt
+  secondJob:
+    needs: primerJob
+    environment: envart
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: artefacto
+      - run: |
+          cat archivo.txt
+          echo "El secreto es: ${{ secrets.PASSWDGH }}"
+  tercerJob:
+    needs: secondJob
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ValentinGarciaIriart/GH_Actions/.github/workflows/finalCallable.yaml
+        with:
+          invocacion: "Hola soy santetas"
+          buleano: false
+  cuartoJob:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        version-dotnet: [4,5,6]
+    steps:
+      - name: Instalar Dotnet 
+        uses: actions/setup-dotnet@4
+        with:
+          dotnet-version: ${{ matrix.version-dotnet }}
+      - run: dotnet --version
+  quintoJob:
+    runs-on: ubuntu-latest
+    steps:
+      - if: success()
+        run: echo Todos los pasos salieron de maravilla
