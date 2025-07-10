@@ -3,10 +3,10 @@ name: ej-definitivo
 on:
   push:
     branches: ["main"]
-    paths: 
-    - "*/src/**"
   pull_request:
     branches: ["main"]
+    paths: 
+      - "*/src/**"
 
   workflow_dispatch:
 
@@ -53,7 +53,7 @@ jobs:
         version-dotnet: ['6.0.x','7.0.x','8.0.x']
     steps:
       - name: Instalar Dotnet 
-        uses: actions/setup-dotnet@4
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.version-dotnet }}
       - run: dotnet --version
