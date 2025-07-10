@@ -1,4 +1,4 @@
-name: finalCallable
+name: final-callable
 
 on:
   workflow_call:

@@ -1,4 +1,4 @@
-name: ejDefinitivo
+name: ej-definitivo
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     branches: ["main"]
 
   workflow_dispatch:
-  
+
 env:
   N1: 2
   N2: 3
@@ -42,10 +42,7 @@ jobs:
           cat archivo.txt
           echo "El secreto es: ${{ secrets.PASSWDGH }}"
   tercerJob:
-    needs: secondJob
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ValentinGarciaIriart/GH_Actions/.github/workflows/finalCallable.yaml
+        uses: ValentinGarciaIriart/GH_Actions/.github/workflows/finalCallable.yaml
         with:
           invocacion: "Hola soy santetas"
           buleano: false
