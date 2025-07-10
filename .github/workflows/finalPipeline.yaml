@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix: 
-        version-dotnet: [4,5,6]
+        version-dotnet: ['6.0.x','7.0.x','8.0.x']
     steps:
       - name: Instalar Dotnet 
         uses: actions/setup-dotnet@4
