@@ -3,19 +3,15 @@ name: final-callable
 on:
   workflow_call:
     inputs:
-     invocacion:
-      type: string
-      required: true
-     buleano:
-      type: boolean
-      required: true
-
+      invocacion:
+        type: string
+        required: true
+      buleano:
+        type: boolean
+        required: true
 
 jobs:
-  llamado:
-    runs-on: ubuntu-latest
+  calleo:
+    runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v4
-      - name: Imprimir por consola
-        run: echo "La salida del llamado es ${{ inputs.invocacion }} y ${{ inputs.buleano }}" 
-      
+    - run: echo "El string que pasas es ${{ inputs.invocacion }} y el booleano es ${{ inputs.buleano }}"
