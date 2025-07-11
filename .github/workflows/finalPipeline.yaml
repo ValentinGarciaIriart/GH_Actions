@@ -66,7 +66,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generar Saludo
-        id: Saludo
+        id: saludo
         run: echo "saludo=Hola Mundo" >> $GITHUB_OUTPUT
       - name: Consumir saludo 
         run: echo "El saludo es ${{ steps.saludo.output.saludo }}"
