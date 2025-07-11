@@ -67,7 +67,7 @@ jobs:
     steps:
       - name: Generar Saludo
         id: Saludo
-        run: echo "saludo=Hola Mundo" >> ${{GITHUB_OUTPUT}}
+        run: echo "saludo=Hola Mundo" >> $GITHUB_OUTPUT
       - name: Consumir saludo 
         run: echo "El saludo es ${{ steps.saludo.output.saludo }}"
  
