@@ -63,10 +63,11 @@ jobs:
       - if: success()
         run: echo Todos los pasos salieron de maravilla
   sextoJob:
-    runs-on: "ubuntu-latest"
+    runs-on: ubuntu-latest
     steps:
-      - name: generar saludo
+      - name: Generar Saludo
         id: saludo
-        run: echo "saludo=Hello World" >> $GITHUB_OUTPUT
-      - name: consumir saludo
+        run: echo "saludo=Hola Mundo" >> $GITHUB_OUTPUT
+      - name: Consumir saludo 
         run: echo "El saludo es ${{ steps.saludo.outputs.saludo }}"
+ 
