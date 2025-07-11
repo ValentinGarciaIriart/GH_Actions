@@ -69,5 +69,5 @@ jobs:
         id: saludo
         run: echo "saludo=Hola Mundo" >> $GITHUB_OUTPUT
       - name: Consumir saludo 
-        run: echo "El saludo es ${{ steps.saludo.output.saludo }}"
+        run: echo "El saludo es ${{ steps.saludo.outputs.saludo }}"
  
