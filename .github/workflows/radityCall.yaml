@@ -1,0 +1,17 @@
+name: workflow-llamado
+
+on:
+  workflow_call:
+    inputs:
+      inp1: 
+        type: string
+        required: true
+      inp2: 
+        type: boolean
+        required: true 
+  
+jobs:
+  llamado:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "El primer input es ${{ inputs.inp1 }} y el segundo es ${{ inputs.inp2 }}"

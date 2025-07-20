@@ -1,0 +1,81 @@
+name: radityWorflow
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    paths:
+      - "*/src/**"
+  workflow_dispatch:
+
+env:
+  N1: 2
+  N2: 5
+  TEXTO: "Hola amigues"
+
+jobs:
+  primerJob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo Este es un run multilinea que va a parar a un archivo > file.txt
+          SUM = $(( N1 + N2 ))
+          echo "La suma da $SUM" >> file.txt
+          echo $TEXTO >> file.txt
+      - name: Generar Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bartefacto
+          path: file.txt
+  segundoJob:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        v-node: [18,20]
+    steps:
+      - name: Instalar node y printear version
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.v-node }}
+      - run: |
+          npm install
+          npm version 
+  tercerJob:
+    needs: segundoJob
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consumir Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: bartefacto
+      - run: |
+          echo Voy a printear el contenido del archivo
+          cat file.txt
+          echo "-----"
+          echo $TEXTO
+        if: ${{ vars.TEXTO == "Hola amigues"}}
+          echo "Es igual"
+  cuartoJob:
+    runs-on: ubuntu-latest
+    needs: tercerJob
+    environment: envart
+    steps:
+      - name: Generar Output
+        id: saludo
+        run: echo "saludo=Esto se va a pasar como output, Hola loco!" >> $GITHUB_OUTPUT
+      - name: Utilizar saludo
+        run: echo "Que dice el output?" ${{ steps.saludo.outputs.saludo }} 
+      - name: Printear secreto
+        run: echo "El secreto es ${{ secrets.PASSWDGH }}"
+  quintoJob:
+      uses: ValentinGarciaIriart/GH_Actions/.github/workflows/radityCall.yaml@main
+      with:
+        inp1: Valentin
+        inp2: false
+
+
+
+
+
+

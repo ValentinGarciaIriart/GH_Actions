@@ -1,0 +1,19 @@
+name: ejercicio-radity
+
+on:
+    workflow_dispatch:
+
+jobs:
+    primerJob:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-v: ["18","20"]
+        steps:
+          - name: Checkout Repo
+            uses: actions/checkout@v4
+          - name: "Instalar Node"
+            uses: actions/setup-node@v3
+            with:
+              node-version: ${{ matrix.node-v }}
+          - run: npm install
