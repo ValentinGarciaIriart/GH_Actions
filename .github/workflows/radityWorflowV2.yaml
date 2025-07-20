@@ -54,7 +54,7 @@ jobs:
           cat file.txt
           echo "-----"
           echo $TEXTO
-        if: ${{ vars.TEXTO == "Hola"}}
+        if: ${{ vars.N1 == 2}}
           echo "Es igual"
   cuartoJob:
     runs-on: ubuntu-latest
