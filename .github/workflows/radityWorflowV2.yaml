@@ -12,7 +12,7 @@ on:
 env:
   N1: 2
   N2: 5
-  TEXTO: "Hola amigues"
+  TEXTO: "Hola"
 
 jobs:
   primerJob:
@@ -54,7 +54,7 @@ jobs:
           cat file.txt
           echo "-----"
           echo $TEXTO
-        if: ${{ vars.TEXTO == "Hola amigues"}}
+        if: ${{ vars.TEXTO == "Hola"}}
           echo "Es igual"
   cuartoJob:
     runs-on: ubuntu-latest
