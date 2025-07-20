@@ -20,10 +20,10 @@ jobs:
     steps:
       - run: |
           echo Este es un run multilinea que va a parar a un archivo > file.txt
-          SUM = $(( N1 + N2 ))
+          SUM=$((N1+N2))
           echo "La suma da $SUM" >> file.txt
           echo $TEXTO >> file.txt
-      - name: Generar Artifact
+      - name: Generar Artifact  
         uses: actions/upload-artifact@v4
         with:
           name: bartefacto
@@ -39,7 +39,6 @@ jobs:
         with:
           node-version: ${{ matrix.v-node }}
       - run: |
-          npm install
           npm version 
   tercerJob:
     needs: segundoJob
